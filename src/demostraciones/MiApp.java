@@ -1,7 +1,19 @@
 package demostraciones;
 
+import java.time.LocalDate;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -14,7 +26,7 @@ public class MiApp extends Application{
     @Override
     public void start(Stage w1) throws Exception {
 //        prueba1(w1);
-          prueba3();
+          prueba5();
     }
     
     public void prueba1(Stage w1){
@@ -72,6 +84,63 @@ public class MiApp extends Application{
         w1.showAndWait();
         w2.show();
         w3.show();
+    }
+    
+    public void prueba4(){
+        Stage w1 = new Stage();
+        w1.setX(100);
+        w1.setY(100);
+        w1.setWidth(500);
+        w1.setHeight(300);
+        Button boton = new Button("Aceptar");
+        ColorPicker cp = new ColorPicker();
+        DatePicker dp = new DatePicker(LocalDate.now());
+        VBox layout = new VBox(50);
+        layout.getChildren().add(boton);
+        layout.getChildren().add(cp);
+        layout.getChildren().add(dp);
+        
+        Scene escena = new Scene(layout);
+        w1.setScene(escena);
+        w1.show();
+    }
+    /**
+     * Eventos
+     */
+    public void prueba5(){
+         Stage w1 = new Stage();
+        w1.setX(100);
+        w1.setY(100);
+        w1.setWidth(500);
+        w1.setHeight(300);
+        Button boton = new Button("Aceptar");
+        ColorPicker cp = new ColorPicker();
+        Label etiqueta = new Label("Nada que hacer");
+        
+        VBox layout = new VBox(50);
+        
+        
+        
+        layout.getChildren().add(boton);
+        layout.getChildren().add(cp);
+        layout.getChildren().add(etiqueta);
+        
+        
+        Scene escena = new Scene(layout);
+        w1.setScene(escena);
+        EventHandler<ActionEvent> e = new EventHandler() {
+             @Override
+             public void handle(Event event) {
+                 escena.setFill(cp.getValue());
+                 System.out.println(cp.getValue());
+                 layout.setBackground(
+                         new Background(
+                         new BackgroundFill(cp.getValue(),
+                                 null,null)));
+             }
+        }; 
+        boton.setOnAction(e);
+        w1.show();
     }
     
     
