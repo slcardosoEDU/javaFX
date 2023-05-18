@@ -4,8 +4,8 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- *
- * @author alumno
+ * Punto de entrada a la aplicacion.
+ * @author samuel loureiro cardoso  
  */
 public class Principal extends Application{
 
