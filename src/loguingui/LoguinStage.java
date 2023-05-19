@@ -132,9 +132,10 @@ public class LoguinStage extends Stage {
      * correspondiente.
      */
     private void tryLoggin() {
-        String aux = "123123";
-        String user = "pepe";
-        if (aux.equals(pass.getText()) && user.equals(this.user.getText())) {
+//        String aux = "123123";
+//        String user = "pepe";
+        Usuario u = AlmacenUsuarios.getUsuarioByUserName(user.getText());
+        if(u!=null && u.testPassword(pass.getText())){
             setLoguinSuccess();
 
         } else {
